@@ -18,6 +18,7 @@ import {
   
   export default function CallToActionWithVideo() {
     const heroColor = useColorModeValue('blue.300', 'red.400');
+    const messageColor = useColorModeValue('black', 'white');
     const myResumeHover = useColorModeValue('blue.500', 'red.500');
     const blobColor = useColorModeValue('blue.200', 'red.400');
     return (
@@ -45,14 +46,14 @@ import {
                   bg: heroColor,
                   zIndex: -1,
                 }}>
-                Build things,
+                Developer
               </Text>
               <br />
               <Text as={'span'} color={heroColor}>
-                change the world!
+                Geek, Dope
               </Text>
             </Heading>
-            <Text color={'gray.500'}>
+            <Text color={messageColor}>
               Thank you for visiting my portfolio website. Here you will find a variety of projects
               that I have personally built to showcase my abilities as a devloper. Software development
               has been a passion of mine since the first time I wrote my first HelloWorld! This isn't a
@@ -103,18 +104,6 @@ import {
               boxShadow={'2xl'}
               width={'full'}
               overflow={'hidden'}>
-              <IconButton
-                aria-label={'Play Button'}
-                variant={'ghost'}
-                _hover={{ bg: 'transparent' }}
-                icon={<PlayIcon w={12} h={12} />}
-                size={'lg'}
-                color={'white'}
-                position={'absolute'}
-                left={'50%'}
-                top={'50%'}
-                transform={'translateX(-50%) translateY(-50%)'}
-              />
               <Image
                 alt={'Hero Image'}
                 fit={'cover'}
@@ -122,7 +111,7 @@ import {
                 w={'100%'}
                 h={'100%'}
                 src={
-                  'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80'
+                  'https://lh3.googleusercontent.com/pw/AP1GczMt6s1dWbtQF7dQrjpDazFKEUd9dAA03uwK43jRfqVco75BF0pKSEE3WFc6GVp89wFVoBevu32Q7B7mTkvg_w-OpCC4B7tl0aDE75JOjBKwDQuRkIMs=w2400'
                 }
               />
             </Box>

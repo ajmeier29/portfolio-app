@@ -139,6 +139,7 @@ import {
     return (
       <Link
         href={href}
+        target='_blank'
         role={'group'}
         display={'block'}
         p={2}
@@ -251,7 +252,7 @@ import {
         {
           label: 'GitHub',
           subLabel: 'My GitHub Contributions and Repositories',
-          href: '#',
+          href: 'https://github.com/ajmeier29',
         },
       ],
     },
