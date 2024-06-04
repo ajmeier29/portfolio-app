@@ -107,7 +107,7 @@ import {
               <Image
                 alt={'Hero Image'}
                 fit={'cover'}
-                align={'bottom'}
+                align={{base: 'bottom', md: '0px -110px'}}
                 w={'100%'}
                 h={'100%'}
                 src={
