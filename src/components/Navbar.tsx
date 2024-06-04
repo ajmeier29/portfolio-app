@@ -139,7 +139,6 @@ import {
     return (
       <Link
         href={href}
-        target='_blank'
         role={'group'}
         display={'block'}
         p={2}
