@@ -58,7 +58,7 @@ import {
             <Text color={messageColor}>
               Thank you for visiting my portfolio website. Here you will find a variety of projects
               that I have personally built to showcase my abilities as a devloper. Software development
-              has been a passion of mine since the first time I wrote my first HelloWorld! This isn't a
+              has been a passion of mine since the first time I wrote my first HelloWorld! This isnt a
               career for me, its a passion!
             </Text>
             <Stack
