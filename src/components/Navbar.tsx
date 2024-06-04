@@ -241,6 +241,10 @@ import {
   
   const NAV_ITEMS: Array<NavItem> = [
     {
+      label: 'Home',
+      href: '/home',
+    },
+    {
       label: 'Resume',
       children: [
         {
@@ -272,7 +276,7 @@ import {
     // },
     {
       label: 'About Me',
-      href: '#',
+      href: '/about',
     },
     {
       label: 'Contact',

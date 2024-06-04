@@ -1,4 +1,6 @@
 
+'use client'
+
 import {
     Container,
     Stack,
