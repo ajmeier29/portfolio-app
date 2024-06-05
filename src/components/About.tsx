@@ -1,40 +1,31 @@
 
 'use client'
 
-import { Flex, SimpleGrid, chakra, Button, Box } from "@chakra-ui/react";
-import { RiAlignItemLeftFill } from "react-icons/ri";
-
-
-
+import { Flex, SimpleGrid, chakra, Button, Box, useColorModeValue, Text, Heading, Center } from '@chakra-ui/react';
 
 export default function AboutPage() {
-
+    const bgColor = useColorModeValue('white', 'gray.800');
     return (
         <Flex
-            bg="blue.500"
-            _dark={{
-                bg: "gray.800",
-            }}
+            bg={bgColor}
             p={20}
-            w="full"
-            justifyContent="center"
-            alignItems="center"
-            pos="absolute"
+            w='full'
+            justifyContent='center'
+            alignItems='center'
+            pos='absolute'
         >
             <Box
-                shadow="xl"
-                bg="white"
+                shadow='dark-lg'
                 _dark={{
-                    bg: "gray.800",
+                    bg: 'gray.600',
+                    boxShadow: 'inset 2px 3px 5px #000000, 0px 1px 1px #333'
                 }}
-                px={8}
+                px={16}
                 py={20}
-                mx="auto"
+                mx='auto'
                 borderRadius={20}
             >
-                
-                {FeaturesList.map((item: Features, index: number)  => {
-
+                {FeaturesList.map((item: Features, index: number) => {
                     if (index % 2 === 0) {
                         item.isLeftSide = false;
                         return <Feature key={item.heading} {...item} />
@@ -43,26 +34,6 @@ export default function AboutPage() {
                         return <Feature key={item.heading} {...item} />
                     }
                 })}
-
-                {/* <SimpleGrid
-                    alignItems="center"
-                    columns={{
-                        base: 1,
-                        md: 2,
-                    }}
-                    flexDirection="column-reverse"
-                    mb={24}
-                    spacingY={{
-                        base: 10,
-                        md: 32,
-                    }}
-                    spacingX={{
-                        base: 10,
-                        md: 24,
-                    }}
-                >
-                </SimpleGrid> */}
-
             </Box>
         </Flex>
     );
@@ -70,9 +41,11 @@ export default function AboutPage() {
 
 const Feature = (items: Features) => {
     const { isLeftSide } = items;
+    const textColor = useColorModeValue('black', 'white')
     return (
         <SimpleGrid
-            alignItems="center"
+            alignItems='center'
+            justifyContent='center'
             columns={{
                 base: 1,
                 md: 2,
@@ -89,79 +62,88 @@ const Feature = (items: Features) => {
         >
             <Box
                 order={{
-                    base: (isLeftSide ? "initial" : ""),
+                    base: (isLeftSide ? 'initial' : ''),
                     md: (isLeftSide ? 2 : 0),
                 }}
+
             >
-                <chakra.h2
+                {/* <chakra.h2
                     mb={4}
                     fontSize={{
-                        base: "2xl",
-                        md: "4xl",
+                        base: '2xl',
+                        md: '4xl',
                     }}
-                    fontWeight="extrabold"
-                    letterSpacing="tight"
+                    fontWeight='extrabold'
+                    letterSpacing='tight'
                     textAlign={{
-                        base: "center",
-                        md: "left",
+                        base: 'center',
+                        md: 'left',
                     }}
-                    color="gray.900"
-                    _dark={{
-                        color: "gray.400",
-                    }}
+                    color={textColor}
                     lineHeight={{
-                        md: "shorter",
+                        md: 'shorter',
                     }}
-                    textShadow="2px 0 currentcolor"
+                    textShadow='2px 0 currentcolor'
                 >
                     {items.heading}
-                </chakra.h2>
-                <chakra.p
+                </chakra.h2> */}
+
+                <Heading
+                    mb={4}
+                    textAlign={{ base: 'center', md: 'left' }}
+                    lineHeight={1.1}
+                    fontWeight={600}
+                    fontSize={{ base: '2xl', sm: '3xl', lg: '4xl' }}>
+                    <Text
+                        as={'span'}
+                        position={'relative'}>
+                        {items.heading}
+                    </Text>
+                </Heading>
+                <Text
                     mb={5}
-                    textAlign={{
-                        base: "center",
-                        sm: "left",
-                    }}
-                    color="gray.600"
-                    _dark={{
-                        color: "gray.400",
-                    }}
-                    fontSize={{
-                        md: "lg",
-                    }}
+                    color={textColor}
+                    textAlign={{ base: 'center', md: 'left' }}
                 >
                     {items.description}
-                </chakra.p>
-                <Button
-                    w={{
-                        base: "full",
-                        sm: "auto",
-                    }}
-                    size="lg"
-                    bg="gray.900"
-                    _dark={{
-                        bg: "gray.700",
-                    }}
-                    _hover={{
-                        bg: "gray.700",
-                        _dark: {
-                            bg: "gray.600",
-                        },
-                    }}
-                    color="gray.100"
-                    as="a"
+                </Text>
+                <Flex
+                    justify={{ base: 'center', md: 'left' }}
+                    align={{ base: 'center', md: 'left' }}
                 >
-                    {items.buttonText}
-                </Button>
+                    <Button
+
+                        w={{
+                            base: 'full',
+                            sm: 'auto',
+                        }}
+                        size='lg'
+                        bg='gray.900'
+                        _dark={{
+                            bg: 'gray.800',
+                        }}
+                        _hover={{
+                            bg: 'gray.700',
+                            _dark: {
+                                bg: 'gray.700',
+                            },
+                        }}
+                        color='gray.100'
+                        as='a'
+                    >
+                        {items.buttonText}
+                    </Button>
+                </Flex>
             </Box>
             <Box
-                w="full"
-                h="full"
+                w='full'
+                h='full'
                 py={48}
-                bg="gray.200"
+                bg='gray.200'
                 _dark={{
-                    bg: "gray.700",
+                    bg: 'gray.700',
                 }}
+                borderRadius={15}
             ></Box>
         </SimpleGrid>
     );
@@ -186,7 +168,7 @@ const FeaturesList: Array<Features> = [
         heading: 'Etsy Seller Since 2012',
         description: 'After years of 3D printing I decided to make my printers work for me. I was fascinated by the idea that I could just buy a 3D printer and pay it off by selling my prints over time. I dont sell much in terms of numbers but all my printers are paid off from sales!',
         buttonText: 'My Etsy Shop',
-        buttonUrl: '#', 
+        buttonUrl: '#',
     },
     {
         heading: 'Etsy Seller Since 2012',
