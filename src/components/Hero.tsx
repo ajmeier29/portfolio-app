@@ -29,6 +29,7 @@ import {
           align={'center'}
           spacing={{ base: 8, md: 10 }}
           py={{ base: 20, md: 28 }}
+          px={{base: 50, lg: 0}}
           direction={{ base: 'column', md: 'row' }}>
           <Stack flex={1} spacing={{ base: 5, md: 10 }}>
             <Heading
@@ -51,7 +52,7 @@ import {
                 Developer
               </Text>
               <br />
-              <Text as={'span'} color={heroColor}>
+              <Text  color={heroColor}>
                 Geek, Dope
               </Text>
             </Heading>
