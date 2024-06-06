@@ -6,7 +6,7 @@ import { Flex, SimpleGrid, chakra, Button, Box, useColorModeValue, Text, Heading
 export default function AboutPage() {
     return (
         <Flex
-            p={20}
+            p={{ base: 3, md:20}}
             w='full'
             justifyContent='center'
             alignItems='center'
