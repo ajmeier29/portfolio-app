@@ -33,6 +33,7 @@ import {
     const { isOpen, onToggle } = useDisclosure();
 
     const { colorMode, toggleColorMode } = useColorMode();
+    const imageSrc = useColorModeValue('./codeByAndyBlack.png', './codeByAndyWhite.png')
   
     return (
       <Box>
@@ -66,9 +67,7 @@ import {
                   
                   w={'55px'}
                   h={'35px'}
-                  src={
-                    './codeByAndyWhite.png'
-                  }
+                  src={imageSrc}
                 />
             </Center>
   
