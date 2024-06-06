@@ -19,10 +19,10 @@ import {
   } from '@chakra-ui/react';
   
   export default function CallToActionWithVideo() {
-    const heroColor = useColorModeValue('blue.300', 'red.400');
+    const heroColor = useColorModeValue('blue.300', 'secondary-dark');
     const messageColor = useColorModeValue('black', 'white');
-    const myResumeHover = useColorModeValue('blue.500', 'red.500');
-    const blobColor = useColorModeValue('blue.200', 'red.400');
+    const myResumeHover = useColorModeValue('blue.500', 'button-hover-dark');
+    const blobColor = useColorModeValue('blue.200', 'secondary-dark');
     return (
       <Container maxW={'7xl'}>
         <Stack
@@ -59,7 +59,7 @@ import {
             <Text color={messageColor}>
               Thank you for visiting my portfolio website. Here you will find a variety of projects
               that I have personally built to showcase my abilities as a devloper. Software development
-              has been a passion of mine since the first time I wrote my first HelloWorld! This isnt a
+              has been a passion of mine since I wrote my first HelloWorld! This isnt a
               career for me, its a passion!
             </Text>
             <Stack
@@ -70,12 +70,13 @@ import {
                 size={'lg'}
                 fontWeight={'normal'}
                 px={6}
-                colorScheme={'blue'}
                 bg={heroColor}
                 _hover={{ bg: myResumeHover }}>
                 My Resume
               </Button>
               <Button
+                as={'a'}
+                href='/about'
                 rounded={'full'}
                 size={'lg'}
                 fontWeight={'normal'}
