@@ -13,14 +13,16 @@ const theme = extendTheme({
       //   _light: "purple.800",
       //   _dark: "pink.100",
       // },
-      "chakra-body-bg": {
+      'chakra-body-bg': {
         _light: "#F1F1F1",
         _dark: "#222831",
       },
+      'primary-dark':'#222831',
+      'secondary-dark': '#50727B',
+      'button-hover-dark': '#344955'
     },
   },
 });
-
 
 export default function RootLayout({
   children,

@@ -18,6 +18,7 @@ import {
     useDisclosure,
     Center,
     useColorMode,
+    Image
   } from '@chakra-ui/react';
   import {
     HamburgerIcon,
@@ -59,12 +60,16 @@ import {
           </Flex>
           <Flex flex={{base: 1}}>
             <Center>
-            <Text
-              textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-              fontFamily={'heading'}
-              color={useColorModeValue('gray.800', 'white')}>
-              Logo
-            </Text>
+              <Image
+                  alt={'Code By Andy Logo'}
+                  
+                  
+                  w={'55px'}
+                  h={'35px'}
+                  src={
+                    './codeByAndyWhite.png'
+                  }
+                />
             </Center>
   
             <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
@@ -88,7 +93,7 @@ import {
   const DesktopNav = () => {
     const linkColor = useColorModeValue('gray.600', 'white');
     const linkHoverColor = useColorModeValue('gray.800', 'gray.400');
-    const popoverContentBgColor = useColorModeValue('white', 'gray.800');
+    const popoverContentBgColor = useColorModeValue('white', 'primary-dark');
   
     return (
       <Stack direction={'row'} spacing={4}>
@@ -133,8 +138,8 @@ import {
   };
   
   const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
-    const hhLightColor = useColorModeValue('blue.50', 'blue.800');   // hover highlight dark color
-    const hhDarkColor = useColorModeValue('blue.400', 'white');   // hover highlight dark color
+    const hoverBgColor = useColorModeValue('blue.50', '#344955');   
+    const textHoverColor = useColorModeValue('blue.400', 'white');   
     return (
       <Link
         href={href}
@@ -142,12 +147,12 @@ import {
         display={'block'}
         p={2}
         rounded={'md'}
-        _hover={{ bg: hhLightColor }}>
+        _hover={{ bg: hoverBgColor }}>
         <Stack direction={'row'} align={'center'}>
           <Box>
             <Text
               transition={'all .3s ease'}
-              _groupHover={{ color: hhDarkColor}}
+              _groupHover={{ color: textHoverColor}}
               fontWeight={500}>
               {label}
             </Text>
@@ -161,7 +166,7 @@ import {
             justify={'flex-end'}
             align={'center'}
             flex={1}>
-            <Icon color={hhDarkColor} w={5} h={5} as={ChevronRightIcon} />
+            <Icon color={textHoverColor} w={5} h={5} as={ChevronRightIcon} />
           </Flex>
         </Stack>
       </Link>
@@ -244,7 +249,7 @@ import {
       href: '/home',
     },
     {
-      label: 'Resume',
+      label: 'See My Work',
       children: [
         {
           label: 'Work Resume',

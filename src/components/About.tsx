@@ -40,6 +40,7 @@ export default function AboutPage() {
 const Feature = (items: Features) => {
     const { isLeftSide } = items;
     const textColor = useColorModeValue('black', 'white')
+    const buttonHoverColor = useColorModeValue('gray.700','button-hover-dark')
     return (
         <SimpleGrid
             alignItems='center'
@@ -118,16 +119,17 @@ const Feature = (items: Features) => {
                         size='lg'
                         bg='gray.900'
                         _dark={{
-                            bg: '#344955',
+                            bg: 'secondary-dark',
                         }}
                         _hover={{
                             bg: 'gray.700',
                             _dark: {
-                                bg: 'gray.700',
+                                bg: 'button-hover-dark',
                             },
                         }}
                         color='gray.100'
                         as='a'
+                        href={items.buttonUrl}
                     >
                         {items.buttonText}
                     </Button>
@@ -166,7 +168,7 @@ const FeaturesList: Array<Features> = [
         heading: 'Etsy Seller Since 2012',
         description: 'After years of 3D printing I decided to make my printers work for me. I was fascinated by the idea that I could just buy a 3D printer and pay it off by selling my prints over time. I dont sell much in terms of numbers but all my printers are paid off from sales!',
         buttonText: 'My Etsy Shop',
-        buttonUrl: '#',
+        buttonUrl: 'https://www.etsy.com/shop/3DPrintsByAndy',
     },
     {
         heading: 'Etsy Seller Since 2012',
