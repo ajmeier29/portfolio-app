@@ -36,7 +36,6 @@ import {
     return (
       <Box>
         <Flex
-          bg={useColorModeValue('white', 'gray.800')}
           color={useColorModeValue('gray.600', 'white')}
           minH={'60px'}
           py={{ base: 2 }}
@@ -253,10 +252,15 @@ import {
           href: '#',
         },
         {
+          label: 'LinkedIn',
+          subLabel: 'View My Work History on LinkedIn',
+          href: 'https://www.linkedin.com/in/andrew-joseph-meier/'
+        },
+        {
           label: 'GitHub',
           subLabel: 'My GitHub Contributions and Repositories',
           href: 'https://github.com/ajmeier29',
-        },
+        }
       ],
     },
     // {

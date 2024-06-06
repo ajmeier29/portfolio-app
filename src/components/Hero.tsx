@@ -19,10 +19,10 @@ import {
   } from '@chakra-ui/react';
   
   export default function CallToActionWithVideo() {
-    const heroColor = useColorModeValue('blue.300', 'red.400');
+    const heroColor = useColorModeValue('blue.300', '#344955');
     const messageColor = useColorModeValue('black', 'white');
     const myResumeHover = useColorModeValue('blue.500', 'red.500');
-    const blobColor = useColorModeValue('blue.200', 'red.400');
+    const blobColor = useColorModeValue('blue.200', '#344955');
     return (
       <Container maxW={'7xl'}>
         <Stack

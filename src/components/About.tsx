@@ -4,10 +4,8 @@
 import { Flex, SimpleGrid, chakra, Button, Box, useColorModeValue, Text, Heading, Center } from '@chakra-ui/react';
 
 export default function AboutPage() {
-    const bgColor = useColorModeValue('white', 'gray.800');
     return (
         <Flex
-            bg={bgColor}
             p={20}
             w='full'
             justifyContent='center'
@@ -17,7 +15,7 @@ export default function AboutPage() {
             <Box
                 shadow='dark-lg'
                 _dark={{
-                    bg: 'gray.600',
+                    bg: '#31363F',
                     boxShadow: 'inset 2px 3px 5px #000000, 0px 1px 1px #333'
                 }}
                 px={16}
@@ -120,7 +118,7 @@ const Feature = (items: Features) => {
                         size='lg'
                         bg='gray.900'
                         _dark={{
-                            bg: 'gray.800',
+                            bg: '#344955',
                         }}
                         _hover={{
                             bg: 'gray.700',
@@ -141,7 +139,7 @@ const Feature = (items: Features) => {
                 py={48}
                 bg='gray.200'
                 _dark={{
-                    bg: 'gray.700',
+                    bg: '#344955',
                 }}
                 borderRadius={15}
             ></Box>
