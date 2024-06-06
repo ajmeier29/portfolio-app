@@ -6,7 +6,7 @@ import { Flex, SimpleGrid, chakra, Button, Box, useColorModeValue, Text, Heading
 export default function AboutPage() {
     return (
         <Flex
-            p={20}
+            p={{ base: 3, md:20}}
             w='full'
             justifyContent='center'
             alignItems='center'
@@ -165,7 +165,7 @@ const FeaturesList: Array<Features> = [
         buttonUrl: '#',
     },
     {
-        heading: 'Etsy Seller Since 2012',
+        heading: 'Etsy Seller Since 2021',
         description: 'After years of 3D printing I decided to make my printers work for me. I was fascinated by the idea that I could just buy a 3D printer and pay it off by selling my prints over time. I dont sell much in terms of numbers but all my printers are paid off from sales!',
         buttonText: 'My Etsy Shop',
         buttonUrl: 'https://www.etsy.com/shop/3DPrintsByAndy',
