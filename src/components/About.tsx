@@ -172,16 +172,16 @@ const FeaturesList: Array<Features> = [
     {
         heading: 'Software Developer Since 2012',
         description: 'I started my career by creating automation scripts to test the iPhone 3Gs/4, which then lead to Full Stack Development later in my 9 year career there. Since then I have built automation scripts, SQL Stored Procedures, built API\'s and worked with a plethora of languages! Check out my Resume to see more!',
-        buttonText: 'Learn More',
+        buttonText: 'My Github',
         imagePath: './github.jpg',
-        buttonUrl: '#'
+        buttonUrl: 'https://github.com/ajmeier29/portfolio-app'
     },
     {
         heading: '3D Printing Since 2016',
         description: 'I have been obsessed with 3D Printing since the day I bought my first 3D printer back in 2016. I bought the Monoprice FDM Printer. Since then I have taught myself how to make some models, tinker, and just flat out print the nerdiest things I could find on Thingiverse.',
-        buttonText: 'Learn More',
+        buttonText: 'See Album',
         imagePath: './3DPrintingAboutImage.jpg',
-        buttonUrl: '#'
+        buttonUrl: 'https://photos.app.goo.gl/LU5RCWuf8CuEj5J48'
     },
     {
         heading: 'Etsy Seller Since 2021',

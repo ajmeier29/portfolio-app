@@ -253,7 +253,7 @@ import {
         {
           label: 'Work Resume',
           subLabel: 'My Professional Work Resume',
-          href: '#',
+          href: '/resume',
         },
         {
           label: 'LinkedIn',
