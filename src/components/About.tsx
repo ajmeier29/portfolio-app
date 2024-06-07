@@ -1,12 +1,12 @@
 
 'use client'
 
-import { Flex, SimpleGrid, chakra, Button, Box, useColorModeValue, Text, Heading, Center } from '@chakra-ui/react';
+import { Flex, SimpleGrid, chakra, Button, Box, useColorModeValue, Text, Heading, Image } from '@chakra-ui/react';
 
 export default function AboutPage() {
     return (
         <Flex
-            p={{ base: 3, md:20}}
+            p={{ base: 3, md: 20 }}
             w='full'
             justifyContent='center'
             alignItems='center'
@@ -40,7 +40,7 @@ export default function AboutPage() {
 const Feature = (items: Features) => {
     const { isLeftSide } = items;
     const textColor = useColorModeValue('black', 'white')
-    const buttonHoverColor = useColorModeValue('gray.700','button-hover-dark')
+    const buttonHoverColor = useColorModeValue('gray.700', 'button-hover-dark')
     return (
         <SimpleGrid
             alignItems='center'
@@ -138,13 +138,23 @@ const Feature = (items: Features) => {
             <Box
                 w='full'
                 h='full'
-                py={48}
+            
                 bg='gray.200'
                 _dark={{
                     bg: '#344955',
                 }}
                 borderRadius={15}
-            ></Box>
+            >
+                <Image
+                    alt={'Hero Image'}
+                    fit={'cover'}
+                    align={{ base: 'bottom'}}
+                    w={'100%'}
+                    h={'100%'}
+                    src={items.imagePath}
+                    borderRadius={15}
+                />
+            </Box>
         </SimpleGrid>
     );
 }
@@ -154,26 +164,30 @@ interface Features {
     description: string,
     buttonText: string,
     buttonUrl: string,
+    imagePath: string,
     isLeftSide?: boolean
 }
 
 const FeaturesList: Array<Features> = [
     {
+        heading: 'Software Developer Since 2012',
+        description: 'I started my career by creating automation scripts to test the iPhone 3Gs/4, which then lead to Full Stack Development later in my 9 year career there. Since then I have built automation scripts, SQL Stored Procedures, built API\'s and worked with a plethora of languages! Check out my Resume to see more!',
+        buttonText: 'Learn More',
+        imagePath: './github.jpg',
+        buttonUrl: '#'
+    },
+    {
         heading: '3D Printing Since 2016',
         description: 'I have been obsessed with 3D Printing since the day I bought my first 3D printer back in 2016. I bought the Monoprice FDM Printer. Since then I have taught myself how to make some models, tinker, and just flat out print the nerdiest things I could find on Thingiverse.',
         buttonText: 'Learn More',
-        buttonUrl: '#',
+        imagePath: './3DPrintingAboutImage.jpg',
+        buttonUrl: '#'
     },
     {
         heading: 'Etsy Seller Since 2021',
         description: 'After years of 3D printing I decided to make my printers work for me. I was fascinated by the idea that I could just buy a 3D printer and pay it off by selling my prints over time. I dont sell much in terms of numbers but all my printers are paid off from sales!',
         buttonText: 'My Etsy Shop',
-        buttonUrl: 'https://www.etsy.com/shop/3DPrintsByAndy',
-    },
-    {
-        heading: 'Etsy Seller Since 2012',
-        description: 'After years of 3D printing I decided to make my printers work for me. I was fascinated by the idea that I could just buy a 3D printer and pay it off by selling my prints over time. I dont sell much in terms of numbers but all my printers are paid off from sales!',
-        buttonText: 'My Etsy Shop',
-        buttonUrl: '#',
+        imagePath: './etsyImage.jpg',
+        buttonUrl: 'https://www.etsy.com/shop/3DPrintsByAndy'
     }
 ];
