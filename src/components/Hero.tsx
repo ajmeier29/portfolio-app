@@ -18,7 +18,7 @@ import {
     useColorMode,
   } from '@chakra-ui/react';
   
-  export default function CallToActionWithVideo() {
+  export default function Hero() {
     const heroColor = useColorModeValue('blue.300', 'secondary-dark');
     const messageColor = useColorModeValue('black', 'white');
     const myResumeHover = useColorModeValue('blue.500', 'button-hover-dark');
