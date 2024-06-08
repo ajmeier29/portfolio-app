@@ -35,8 +35,6 @@ export default function RootLayout({
       <body style={background}>
         <ChakraProvider theme={theme}>
           <Navbar />
-          {/* 
-          <Hero /> */}
           {children}
         </ChakraProvider>
       </body>

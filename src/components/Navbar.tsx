@@ -136,9 +136,10 @@ import {
     );
   };
   
-  const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
+  const DesktopSubNav = ({ label, href, subLabel, icon_light, icon_dark, iconSize }: NavItem) => {
     const hoverBgColor = useColorModeValue('blue.50', '#344955');   
     const textHoverColor = useColorModeValue('blue.400', 'white');   
+    const iconSrc = useColorModeValue(icon_light, icon_dark);
     return (
       <Link
         href={href}
@@ -149,7 +150,15 @@ import {
         _hover={{ bg: hoverBgColor }}>
         <Stack direction={'row'} align={'center'}>
           <Box>
+            <Image
+              src={iconSrc}
+              w={iconSize}
+              display={'inline-block'} 
+            >
+            </Image>
             <Text
+              ml={2}
+              display={'inline-block'}
               transition={'all .3s ease'}
               _groupHover={{ color: textHoverColor}}
               fontWeight={500}>
@@ -240,6 +249,9 @@ import {
     subLabel?: string;
     children?: Array<NavItem>;
     href?: string;
+    icon_light?: string;
+    icon_dark?: string;
+    iconSize?: string;
   }
   
   const NAV_ITEMS: Array<NavItem> = [
@@ -253,17 +265,23 @@ import {
         {
           label: 'Work Resume',
           subLabel: 'My Professional Work Resume',
-          href: '/resume',
+          href: 'https://docs.google.com/document/d/1-OkGqA5kyTMANqpheed3RaX2Hazz8ThoN_9J46O1Vnc/edit?usp=sharing',
         },
         {
           label: 'LinkedIn',
           subLabel: 'View My Work History on LinkedIn',
-          href: 'https://www.linkedin.com/in/andrew-joseph-meier/'
+          href: 'https://www.linkedin.com/in/andrew-joseph-meier/',
+          icon_light: './linkedIn_Light.png', 
+          icon_dark: './linkedIn_Dark.png',
+          iconSize: '20px'
         },
         {
           label: 'GitHub',
           subLabel: 'My GitHub Contributions and Repositories',
           href: 'https://github.com/ajmeier29',
+          icon_light: './github-mark-black.png',
+          icon_dark: './github-mark-white.png',
+          iconSize: '20px'
         }
       ],
     },

@@ -18,11 +18,12 @@ import {
     useColorMode,
   } from '@chakra-ui/react';
   
-  export default function CallToActionWithVideo() {
+  export default function Hero() {
     const heroColor = useColorModeValue('blue.300', 'secondary-dark');
     const messageColor = useColorModeValue('black', 'white');
     const myResumeHover = useColorModeValue('blue.500', 'button-hover-dark');
     const blobColor = useColorModeValue('blue.200', 'secondary-dark');
+    const resumeDownload = 'https://docs.google.com/document/d/1-OkGqA5kyTMANqpheed3RaX2Hazz8ThoN_9J46O1Vnc/edit?usp=sharing';
     return (
       <Container maxW={'7xl'}>
         <Stack
@@ -66,6 +67,8 @@ import {
               spacing={{ base: 4, sm: 6 }}
               direction={{ base: 'column', sm: 'row' }}>
               <Button
+                as={'a'}
+                href={'https://docs.google.com/document/d/1-OkGqA5kyTMANqpheed3RaX2Hazz8ThoN_9J46O1Vnc/edit?usp=sharing'}
                 rounded={'full'}
                 size={'lg'}
                 fontWeight={'normal'}
