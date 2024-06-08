@@ -2,7 +2,7 @@
 'use client'
 
 import {
-  Flex, Box, Stack
+  Flex, Box, Stack, Button
 } from '@chakra-ui/react';
 
 export default function Resume() {
@@ -24,8 +24,12 @@ export default function Resume() {
         py={20}
         mx='auto'
         borderRadius={20}
-        width={'100%'}
+        w={'100%'}
       >
+          <Button
+            as='a'
+            href='https://docs.google.com/document/d/1-OkGqA5kyTMANqpheed3RaX2Hazz8ThoN_9J46O1Vnc/edit?usp=sharing'
+          >Download Resume</Button>
           <object width="100%" height="1000px" data="https://docs.google.com/document/d/e/2PACX-1vStO7tkroZheoEb3yk2ejnN0ETUrjg8fs4HGqP8KCqCpruqmiA_NqdmomzdehEoj1JLDV-PM4vHyJWW/pub" type="application/pdf">   </object>
       </Box>
     </Flex>

@@ -253,7 +253,7 @@ import {
         {
           label: 'Work Resume',
           subLabel: 'My Professional Work Resume',
-          href: '/resume',
+          href: 'https://docs.google.com/document/d/1-OkGqA5kyTMANqpheed3RaX2Hazz8ThoN_9J46O1Vnc/edit?usp=sharing',
         },
         {
           label: 'LinkedIn',
