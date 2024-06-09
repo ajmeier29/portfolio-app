@@ -47,7 +47,7 @@ const Feature = (items: Features) => {
             justifyContent='center'
             columns={{
                 base: 1,
-                md: 2,
+                lg: 2,
             }}
             mb={24}
             spacingY={{
