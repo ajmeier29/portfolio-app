@@ -1,12 +1,12 @@
 
 'use client'
 
-import { Flex, SimpleGrid, chakra, Button, Box, useColorModeValue, Text, Heading, Image } from '@chakra-ui/react';
+import { Flex, SimpleGrid, Button, Box, useColorModeValue, Text, Heading, Image } from '@chakra-ui/react';
 
 export default function AboutPage() {
     return (
         <Flex
-            p={{ base: 3, md: 20 }}
+            p={{ base: 3, lg: 20 }}
             w='full'
             justifyContent='center'
             alignItems='center'
@@ -52,17 +52,17 @@ const Feature = (items: Features) => {
             mb={24}
             spacingY={{
                 base: 10,
-                md: 32,
+                lg: 32,
             }}
             spacingX={{
                 base: 10,
-                md: 24,
+                lg: 24,
             }}
         >
             <Box
                 order={{
                     base: (isLeftSide ? 'initial' : ''),
-                    md: (isLeftSide ? 2 : 0),
+                    lg: (isLeftSide ? 2 : 0),
                 }}
 
             >
@@ -89,7 +89,7 @@ const Feature = (items: Features) => {
 
                 <Heading
                     mb={4}
-                    textAlign={{ base: 'center', md: 'left' }}
+                    textAlign={{ base: 'center', lg: 'left' }}
                     lineHeight={1.1}
                     fontWeight={600}
                     fontSize={{ base: '2xl', sm: '3xl', lg: '4xl' }}>
@@ -102,13 +102,13 @@ const Feature = (items: Features) => {
                 <Text
                     mb={5}
                     color={textColor}
-                    textAlign={{ base: 'center', md: 'left' }}
+                    textAlign={{ base: 'center', lg: 'left' }}
                 >
                     {items.description}
                 </Text>
                 <Flex
-                    justify={{ base: 'center', md: 'left' }}
-                    align={{ base: 'center', md: 'left' }}
+                    justify={{ base: 'center', lg: 'left' }}
+                    align={{ base: 'center', lg: 'left' }}
                 >
                     <Button
 
@@ -136,9 +136,7 @@ const Feature = (items: Features) => {
                 </Flex>
             </Box>
             <Box
-                w='full'
-                h='full'
-            
+                flexShrink={0}
                 bg='gray.200'
                 _dark={{
                     bg: '#344955',

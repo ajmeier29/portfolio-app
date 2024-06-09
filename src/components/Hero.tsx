@@ -30,7 +30,7 @@ import {
           align={'center'}
           spacing={{ base: 8, md: 10 }}
           py={{ base: 20, md: 28 }}
-          px={{base: 50, lg: 30}}
+          px={{base: 50, lg: 70}}
           direction={{ base: 'column', md: 'row' }}>
           <Stack flex={1} spacing={{ base: 5, md: 10 }}>
             <Heading
@@ -90,33 +90,30 @@ import {
             </Stack>
           </Stack>
           <Flex
-            flex={1}
-            justify={'center'}
+            justify={ {base: 'center', lg: 'right'}}
             align={'center'}
             position={'relative'}
             w={'full'}>
             <Blob
-              w={'150%'}
-              h={'150%'}
+              w={{ base: '150%', md: '130%'}}
+              h={{ base: '150%', md: '130%'}}
               position={'absolute'}
-              top={'-20%'}
+              top={{md: '-10%'}}
               left={0}
               zIndex={-1}
               color={blobColor}
             />
             <Box
               position={'relative'}
-              height={'300px'}
               rounded={'2xl'}
               boxShadow={'2xl'}
-              width={'full'}
               overflow={'hidden'}>
               <Image
                 alt={'Hero Image'}
                 fit={'cover'}
-                align={{base: 'bottom', md: '0px -110px'}}
-                w={'100%'}
-                h={'100%'}
+                // align={{base: 'bottom', md: '0px -110px'}}
+                height={'400px'}
+                width={'900px'}
                 src={
                   'https://lh3.googleusercontent.com/pw/AP1GczMt6s1dWbtQF7dQrjpDazFKEUd9dAA03uwK43jRfqVco75BF0pKSEE3WFc6GVp89wFVoBevu32Q7B7mTkvg_w-OpCC4B7tl0aDE75JOjBKwDQuRkIMs=w2400'
                 }
