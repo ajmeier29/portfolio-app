@@ -1,12 +1,12 @@
 
 'use client'
 
-import { Flex, SimpleGrid, chakra, Button, Box, useColorModeValue, Text, Heading, Image } from '@chakra-ui/react';
+import { Flex, SimpleGrid, Button, Box, useColorModeValue, Text, Heading, Image } from '@chakra-ui/react';
 
-export default function AboutPage() {
+export default function About() {
     return (
         <Flex
-            p={{ base: 3, md: 20 }}
+            p={{ base: 3, lg: 20 }}
             w='full'
             justifyContent='center'
             alignItems='center'
@@ -47,49 +47,28 @@ const Feature = (items: Features) => {
             justifyContent='center'
             columns={{
                 base: 1,
-                md: 2,
+                lg: 2,
             }}
             mb={24}
             spacingY={{
                 base: 10,
-                md: 32,
+                lg: 32,
             }}
             spacingX={{
                 base: 10,
-                md: 24,
+                lg: 24,
             }}
         >
             <Box
                 order={{
                     base: (isLeftSide ? 'initial' : ''),
-                    md: (isLeftSide ? 2 : 0),
+                    lg: (isLeftSide ? 2 : 0),
                 }}
 
             >
-                {/* <chakra.h2
-                    mb={4}
-                    fontSize={{
-                        base: '2xl',
-                        md: '4xl',
-                    }}
-                    fontWeight='extrabold'
-                    letterSpacing='tight'
-                    textAlign={{
-                        base: 'center',
-                        md: 'left',
-                    }}
-                    color={textColor}
-                    lineHeight={{
-                        md: 'shorter',
-                    }}
-                    textShadow='2px 0 currentcolor'
-                >
-                    {items.heading}
-                </chakra.h2> */}
-
                 <Heading
                     mb={4}
-                    textAlign={{ base: 'center', md: 'left' }}
+                    textAlign={{ base: 'center', lg: 'left' }}
                     lineHeight={1.1}
                     fontWeight={600}
                     fontSize={{ base: '2xl', sm: '3xl', lg: '4xl' }}>
@@ -102,13 +81,13 @@ const Feature = (items: Features) => {
                 <Text
                     mb={5}
                     color={textColor}
-                    textAlign={{ base: 'center', md: 'left' }}
+                    textAlign={{ base: 'center', lg: 'left' }}
                 >
                     {items.description}
                 </Text>
                 <Flex
-                    justify={{ base: 'center', md: 'left' }}
-                    align={{ base: 'center', md: 'left' }}
+                    justify={{ base: 'center', lg: 'left' }}
+                    align={{ base: 'center', lg: 'left' }}
                 >
                     <Button
 
@@ -117,7 +96,8 @@ const Feature = (items: Features) => {
                             sm: 'auto',
                         }}
                         size='lg'
-                        bg='gray.900'
+                        fontWeight={'normal'}
+                        bg='button-light'
                         _dark={{
                             bg: 'secondary-dark',
                         }}
@@ -126,8 +106,11 @@ const Feature = (items: Features) => {
                             _dark: {
                                 bg: 'button-hover-dark',
                             },
+                            _light: {
+                                bg: 'button-light-hover'
+                            }
                         }}
-                        color='gray.100'
+                        color='gray.900'
                         as='a'
                         href={items.buttonUrl}
                     >
@@ -136,9 +119,7 @@ const Feature = (items: Features) => {
                 </Flex>
             </Box>
             <Box
-                w='full'
-                h='full'
-            
+                flexShrink={0}
                 bg='gray.200'
                 _dark={{
                     bg: '#344955',
