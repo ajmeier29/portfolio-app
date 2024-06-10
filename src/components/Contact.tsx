@@ -31,7 +31,7 @@ export default function Contact() {
             <Flex
                 align={'center'}
                 justify={'center'}
-                
+
                 shadow='dark-lg'
                 px={16}
                 py={20}
@@ -56,7 +56,9 @@ export default function Contact() {
                             <FormControl isInvalid={isError}>
                                 <Stack spacing={5}>
                                     <InputGroup>
-                                        <InputLeftElement children={<MdOutlinePerson />} />
+                                        <InputLeftElement>
+                                            <MdOutlinePerson />
+                                        </InputLeftElement>
                                         <Input
                                             type="text"
                                             name="name"
@@ -64,21 +66,23 @@ export default function Contact() {
                                         />
                                     </InputGroup>
                                     <InputGroup>
-                                        <InputLeftElement children={<EmailIcon />} />
+                                        <InputLeftElement>
+                                            <EmailIcon />
+                                        </InputLeftElement>
                                         <Input
                                             type="email"
                                             name="email"
                                             placeholder="Your Email"
                                         />
                                     </InputGroup>
-                                    <Textarea 
+                                    <Textarea
                                         name="message"
                                         placeholder="Your Message"
                                         rows={6}
                                     />
                                 </Stack>
                             </FormControl>
-                            <Button 
+                            <Button
                                 mt={5}
                                 width={'full'}
                                 fontWeight={'normal'}
