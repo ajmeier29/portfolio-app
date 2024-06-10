@@ -106,6 +106,9 @@ const Feature = (items: Features) => {
                             _dark: {
                                 bg: 'button-hover-dark',
                             },
+                            _light: {
+                                bg: 'button-light-hover'
+                            }
                         }}
                         color='gray.900'
                         as='a'
