@@ -14,12 +14,14 @@ const theme = extendTheme({
       //   _dark: "pink.100",
       // },
       'chakra-body-bg': {
-        _light: "#F1F1F1",
+        _light: "white",
         _dark: "#222831",
       },
       'primary-dark':'#222831',
       'secondary-dark': '#50727B',
-      'button-hover-dark': '#344955'
+      'button-dark-hover': '#344955',
+      'button-light': '#92C7CF',
+      'button-light-hover': '#7ab8c2'
     },
   },
 });

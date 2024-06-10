@@ -3,7 +3,7 @@
 
 import { Flex, SimpleGrid, Button, Box, useColorModeValue, Text, Heading, Image } from '@chakra-ui/react';
 
-export default function AboutPage() {
+export default function About() {
     return (
         <Flex
             p={{ base: 3, lg: 20 }}
@@ -66,27 +66,6 @@ const Feature = (items: Features) => {
                 }}
 
             >
-                {/* <chakra.h2
-                    mb={4}
-                    fontSize={{
-                        base: '2xl',
-                        md: '4xl',
-                    }}
-                    fontWeight='extrabold'
-                    letterSpacing='tight'
-                    textAlign={{
-                        base: 'center',
-                        md: 'left',
-                    }}
-                    color={textColor}
-                    lineHeight={{
-                        md: 'shorter',
-                    }}
-                    textShadow='2px 0 currentcolor'
-                >
-                    {items.heading}
-                </chakra.h2> */}
-
                 <Heading
                     mb={4}
                     textAlign={{ base: 'center', lg: 'left' }}
@@ -117,7 +96,8 @@ const Feature = (items: Features) => {
                             sm: 'auto',
                         }}
                         size='lg'
-                        bg='gray.900'
+                        fontWeight={'normal'}
+                        bg='button-light'
                         _dark={{
                             bg: 'secondary-dark',
                         }}
@@ -127,7 +107,7 @@ const Feature = (items: Features) => {
                                 bg: 'button-hover-dark',
                             },
                         }}
-                        color='gray.100'
+                        color='gray.900'
                         as='a'
                         href={items.buttonUrl}
                     >

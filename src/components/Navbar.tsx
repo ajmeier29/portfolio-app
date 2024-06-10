@@ -22,13 +22,14 @@ import {
   VStack,
   HStack
 } from '@chakra-ui/react';
+
 import {
   HamburgerIcon,
   CloseIcon,
   ChevronDownIcon,
   ChevronRightIcon,
   MoonIcon,
-  SunIcon,
+  SunIcon
 } from '@chakra-ui/icons';
 
 export default function Navbar() {
