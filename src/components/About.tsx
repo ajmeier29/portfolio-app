@@ -13,7 +13,7 @@ export default function About() {
             pos='absolute'
         >
             <Box
-                shadow='dark-lg'
+                shadow={{base: 'dark-lg', md: '2xl'}}
                 _dark={{
                     bg: '#31363F',
                     boxShadow: 'inset 2px 3px 5px #000000, 0px 1px 1px #333'
@@ -152,7 +152,7 @@ interface Features {
 const FeaturesList: Array<Features> = [
     {
         heading: 'Software Developer Since 2012',
-        description: 'I started my career by creating automation scripts to test the iPhone 3Gs/4, which then lead to Full Stack Development later in my 9 year career there. Since then I have built automation scripts, SQL Stored Procedures, built API\'s and worked with a plethora of languages! Check out my Resume to see more!',
+        description: 'I started my career by creating automation scripts to test the iPhone 3Gs/4, which then lead to Full Stack Development later in my 9 year career there. Since then I have built automation scripts, SQL Stored Procedures, built API\'s and worked with a plethora of languages! Check out my GitHub to see more!',
         buttonText: 'My Github',
         imagePath: './github.jpg',
         buttonUrl: 'https://github.com/ajmeier29/portfolio-app'
