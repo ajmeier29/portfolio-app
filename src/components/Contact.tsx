@@ -20,7 +20,6 @@ export default function Contact() {
         name: '',
         email: '',
         message: '',
-        isMobile: false
     });
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -41,7 +40,6 @@ export default function Contact() {
                 from_name: formData.name,
                 email: formData.email,
                 message: formData.message,
-                isMobile: (width <= 768)
             });
             toast({
                 title: 'Message Sent!.',
@@ -51,13 +49,6 @@ export default function Contact() {
                 variant: 'subtle',
                 isClosable: true,
             })
-            setFormData({
-                name: '',
-                email: '',
-                message: '',
-                isMobile: false
-            });
-            //alert("email successfully sent check inbox");
         } catch (error) {
             console.log(error);
         } finally {
