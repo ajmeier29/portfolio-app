@@ -13,7 +13,7 @@ export default function Contact() {
     const from_name = useRef<HTMLInputElement>();
     const message = useRef<HTMLInputElement>();
     const [loading, setLoading] = useState(false);
-    const [width, setWidth] = useState<number>(window.innerWidth);
+
     const toast = useToast()
     useEffect(() => emailjs.init("q9WRjNUNHKzXT12F4"), []);
     const [formData, setFormData] = useState({
@@ -22,16 +22,6 @@ export default function Contact() {
         message: '',
         isMobile: false
     });
-
-    function handleWindowSizeChange() {
-        setWidth(window.innerWidth);
-    }
-    useEffect(() => {
-        window.addEventListener('resize', handleWindowSizeChange);
-        return () => {
-            window.removeEventListener('resize', handleWindowSizeChange);
-        }
-    }, []);
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = event.target;
