@@ -2,10 +2,10 @@
 
 import { EmailIcon } from "@chakra-ui/icons"
 import { Box, Button, Flex, FormControl, Heading, Input, InputGroup, InputLeftElement, Stack, Text, Textarea, VStack, useToast } from "@chakra-ui/react"
-import { useEffect, useState } from "react"
-import { MdOutlinePerson } from 'react-icons/md'
+import { useEffect, useState } from "react";
+import { MdOutlinePerson } from 'react-icons/md';
 import emailjs from '@emailjs/browser';
-
+import { GoogleReCaptcha, GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import React, { useRef } from 'react';
 
 export default function Contact() {
@@ -13,8 +13,15 @@ export default function Contact() {
     const from_name = useRef<HTMLInputElement>();
     const message = useRef<HTMLInputElement>();
     const [loading, setLoading] = useState(false);
-
+    const key: string = (process.env.REACT_APP_SITE_KEY as string);
     const toast = useToast()
+    const [token, setToken] = useState("");
+    const [refreshReCaptcha, setRefreshReCaptcha] = useState(false);
+
+    const setTokenFunc = (getToken: string) => {
+        setToken(getToken);
+      };
+
     useEffect(() => emailjs.init("q9WRjNUNHKzXT12F4"), []);
     const [formData, setFormData] = useState({
         name: '',
@@ -42,7 +49,7 @@ export default function Contact() {
                 message: formData.message,
             });
             toast({
-                title: 'Message Sent!.',
+                title: 'Message Sent!',
                 description: "We will be in contact soon.",
                 status: 'success',
                 duration: 5000,
@@ -121,6 +128,12 @@ export default function Contact() {
                                         />
                                     </Stack>
                                 </FormControl>
+                                <GoogleReCaptchaProvider reCaptchaKey={key}>
+                                    <GoogleReCaptcha
+                                        onVerify={setTokenFunc}
+                                        refreshReCaptcha={refreshReCaptcha}
+                                    />
+                                </GoogleReCaptchaProvider>
                                 <Button
                                     isLoading={loading}
                                     loadingText='Sending'
