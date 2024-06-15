@@ -5,8 +5,8 @@ import { Box, Button, Flex, FormControl, Heading, Input, InputGroup, InputLeftEl
 import { useEffect, useState } from "react";
 import { MdOutlinePerson } from 'react-icons/md';
 import emailjs from '@emailjs/browser';
-import { GoogleReCaptcha, GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import React, { useRef } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 export default function Contact() {
     const emailRef = useRef<HTMLInputElement>();
@@ -16,11 +16,18 @@ export default function Contact() {
     const key: string = (process.env.REACT_APP_SITE_KEY as string);
     const toast = useToast()
     const [token, setToken] = useState("");
-    const [refreshReCaptcha, setRefreshReCaptcha] = useState(false);
+    const recaptcha = React.createRef<ReCAPTCHA>();
 
-    const setTokenFunc = (getToken: string) => {
-        setToken(getToken);
-      };
+    function onChange(value: any) {
+        // verify captcha
+        const captchaValue = recaptcha?.current?.getValue()
+        if (!captchaValue) {
+            console.log('Please verify the reCAPTCHA!')
+        } else {
+            // make form submission
+            console.log('Form submission successful!')
+        }
+    }
 
     useEffect(() => emailjs.init("q9WRjNUNHKzXT12F4"), []);
     const [formData, setFormData] = useState({
@@ -40,6 +47,7 @@ export default function Contact() {
     const handleSubmit = async (e: { preventDefault: () => void }) => {
         setLoading(true);
         e.preventDefault();
+
         const serviceId = "service_8umnbiq";
         const templateId = "template_r9l8rsi";
         try {
@@ -128,12 +136,11 @@ export default function Contact() {
                                         />
                                     </Stack>
                                 </FormControl>
-                                <GoogleReCaptchaProvider reCaptchaKey={key}>
-                                    <GoogleReCaptcha
-                                        onVerify={setTokenFunc}
-                                        refreshReCaptcha={refreshReCaptcha}
-                                    />
-                                </GoogleReCaptchaProvider>
+                                <ReCAPTCHA
+                                    ref={recaptcha}
+                                    sitekey={'6LfMdfgpAAAAAMKSHH_c7zjHwBl3DZ4YAQQwW2yp'}
+                                    onChange={onChange}
+                                />
                                 <Button
                                     isLoading={loading}
                                     loadingText='Sending'
