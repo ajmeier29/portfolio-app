@@ -7,18 +7,24 @@ import { MdOutlinePerson } from 'react-icons/md';
 import emailjs from '@emailjs/browser';
 import React, { useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { stringify } from "querystring";
 
 export default function Contact() {
+    
     const emailRef = useRef<HTMLInputElement>();
     const from_name = useRef<HTMLInputElement>();
     const message = useRef<HTMLInputElement>();
     const [loading, setLoading] = useState(false);
-    const key: string = (process.env.REACT_APP_SITE_KEY as string);
+    const key: string = (process.env.NEXT_PUBLIC_SITE_KEY as string);
+    const emailPubKey: string = (process.env.NEXT_PUBLIC_EMAIL_PUB_KEY as string);
+    const emailServiceId: string = (process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID as string);
+    const emailTemplateId: string = (process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID as string);
+    const verifyUrl: string = (process.env.NEXT_PUBLIC_VERIFY_URL as string);
     const toast = useToast()
     const [token, setToken] = useState("");
     const recaptcha = React.createRef<ReCAPTCHA>();
 
-    function onChange(value: any) {
+    async function onChange(value: any) {
         // verify captcha
         const captchaValue = recaptcha?.current?.getValue()
         if (!captchaValue) {
@@ -26,10 +32,24 @@ export default function Contact() {
         } else {
             // make form submission
             console.log('Form submission successful!')
+            const res = await fetch(verifyUrl, {
+                method: 'POST',
+                body: JSON.stringify({ captchaValue }),
+                headers: {
+                  'content-type': 'application/json',
+                },
+              })
+              const data = await res.json()
+              if (data.success) {
+                // make form submission
+                console.log(`Form submission successful! Data: ${JSON.stringify(data)}`)
+              } else {
+                alert('reCAPTCHA validation failed!')
+              }
         }
     }
 
-    useEffect(() => emailjs.init("q9WRjNUNHKzXT12F4"), []);
+    useEffect(() => emailjs.init(emailPubKey), []);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -48,10 +68,8 @@ export default function Contact() {
         setLoading(true);
         e.preventDefault();
 
-        const serviceId = "service_8umnbiq";
-        const templateId = "template_r9l8rsi";
         try {
-            await emailjs.send(serviceId, templateId, {
+            await emailjs.send(emailServiceId, emailTemplateId, {
                 from_name: formData.name,
                 email: formData.email,
                 message: formData.message,
@@ -105,7 +123,10 @@ export default function Contact() {
                             </Text>
                             <form onSubmit={handleSubmit}>
                                 <FormControl>
-                                    <Stack spacing={5}>
+                                    <Stack 
+                                        spacing={5}
+                                        mb={2}
+                                    >
                                         <InputGroup>
                                             <InputLeftElement>
                                                 <MdOutlinePerson />
@@ -138,8 +159,9 @@ export default function Contact() {
                                 </FormControl>
                                 <ReCAPTCHA
                                     ref={recaptcha}
-                                    sitekey={'6LfMdfgpAAAAAMKSHH_c7zjHwBl3DZ4YAQQwW2yp'}
+                                    sitekey={key}
                                     onChange={onChange}
+                                    data-size={'normal'}
                                 />
                                 <Button
                                     isLoading={loading}
