@@ -10,10 +10,8 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import { stringify } from "querystring";
 
 export default function Contact() {
-    
-    const emailRef = useRef<HTMLInputElement>();
-    const from_name = useRef<HTMLInputElement>();
-    const message = useRef<HTMLInputElement>();
+
+    const [captchaPass, setCaptchaPass] = useState<boolean>();
     const [loading, setLoading] = useState(false);
     const key: string = (process.env.NEXT_PUBLIC_SITE_KEY as string);
     const emailPubKey: string = (process.env.NEXT_PUBLIC_EMAIL_PUB_KEY as string);
@@ -31,21 +29,27 @@ export default function Contact() {
             console.log('Please verify the reCAPTCHA!')
         } else {
             // make form submission
-            console.log('Form submission successful!')
-            const res = await fetch(verifyUrl, {
-                method: 'POST',
-                body: JSON.stringify({ captchaValue }),
-                headers: {
-                  'content-type': 'application/json',
-                },
-              })
-              const data = await res.json()
-              if (data.success) {
-                // make form submission
-                console.log(`Form submission successful! Data: ${JSON.stringify(data)}`)
-              } else {
-                alert('reCAPTCHA validation failed!')
-              }
+            console.log('Form submission started...')
+            try {
+                const res = await fetch(verifyUrl, {
+                    method: 'POST',
+                    body: JSON.stringify({ captchaValue }),
+                    mode: 'cors',
+                    headers: {
+                        'content-type': 'application/json',
+                    },
+                })
+                const data = await res.json()
+                if (data.success) {
+                    setCaptchaPass(data.success)
+                    // make form submission
+                    console.log(`Form submission successful! Data: ${JSON.stringify(data)}`)
+                } else {
+                    alert('reCAPTCHA validation failed!')
+                }
+            } catch (e) {
+                console.log(`Exception from verify: ${e}`);
+            }
         }
     }
 
@@ -65,27 +69,38 @@ export default function Contact() {
     };
 
     const handleSubmit = async (e: { preventDefault: () => void }) => {
-        setLoading(true);
         e.preventDefault();
-
-        try {
-            await emailjs.send(emailServiceId, emailTemplateId, {
-                from_name: formData.name,
-                email: formData.email,
-                message: formData.message,
-            });
+        
+        if (!captchaPass) {
             toast({
-                title: 'Message Sent!',
-                description: "We will be in contact soon.",
-                status: 'success',
+                title: 'Unable to submit.',
+                description: "You must check the Captcha checkbox!",
+                status: 'error',
                 duration: 5000,
                 variant: 'subtle',
                 isClosable: true,
             })
-        } catch (error) {
-            console.log(error);
-        } finally {
-            setLoading(false);
+        } else {
+            try {
+                setLoading(true);
+                await emailjs.send(emailServiceId, emailTemplateId, {
+                    from_name: formData.name,
+                    email: formData.email,
+                    message: formData.message,
+                });
+                toast({
+                    title: 'Message Sent!',
+                    description: "We will be in contact soon.",
+                    status: 'success',
+                    duration: 5000,
+                    variant: 'subtle',
+                    isClosable: true,
+                })
+            } catch (error) {
+                console.log(error);
+            } finally {
+                setLoading(false);
+            }
         }
     };
 
@@ -123,7 +138,7 @@ export default function Contact() {
                             </Text>
                             <form onSubmit={handleSubmit}>
                                 <FormControl>
-                                    <Stack 
+                                    <Stack
                                         spacing={5}
                                         mb={2}
                                     >
