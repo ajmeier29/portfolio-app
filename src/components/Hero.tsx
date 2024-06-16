@@ -60,7 +60,7 @@ export default function Hero() {
           <Heading
             lineHeight={1.1}
             fontWeight={600}
-            fontSize={{ base: '2xl', sm: '4xl', lg: '6xl' }}>
+            fontSize={{ base: '2xl', sm: '4xl', lg: '5xl' }}>
             <Text
               as={'span'}
               position={'relative'}
