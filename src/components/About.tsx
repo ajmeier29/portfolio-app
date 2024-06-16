@@ -110,7 +110,7 @@ const Feature = (items: Features) => {
                                 bg: 'button-light-hover'
                             }
                         }}
-                        color='gray.900'
+                        color='#f9f9f9'
                         as='a'
                         href={items.buttonUrl}
                     >
