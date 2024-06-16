@@ -19,7 +19,7 @@ export default function Contact() {
     const emailTemplateId: string = (process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID as string);
     const verifyUrl: string = (process.env.NEXT_PUBLIC_VERIFY_URL as string);
     const toast = useToast()
-    const recaptcha = React.createRef<ReCAPTCHA>();
+    const recaptcha = React.useRef<ReCAPTCHA>();
 
     // TODO: Break this out into a separate file. 
     // Handle Captcha form submission 
@@ -104,7 +104,10 @@ export default function Contact() {
                     variant: 'subtle',
                     isClosable: true,
                 })
+                // reset form and captcha
                 reset();
+                setCaptchaPass(false);
+                recaptcha?.current?.reset();
             } catch (error) {
                 console.log(error);
             } finally {
