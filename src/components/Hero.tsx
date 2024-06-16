@@ -87,9 +87,9 @@ export default function Hero() {
           </Heading>
           <Text color={messageColor}>
             Thank you for visiting my portfolio website. Here you will find a variety of projects
-            that I have personally built to showcase my abilities as a devloper. Software development
-            has been a passion of mine since I wrote my first HelloWorld! This isnt a
-            career for me, its a passion!
+            that I have personally built to showcase my abilities as a devloper. I am fluent in C#/.NET, SQL, React,
+            JS, Pyhon and more. Click More Information to learn more about me, or click See My Work above to view my
+            Resume, LinkedIn, or GitHub!
           </Text>
           <Stack
             spacing={{ base: 4, sm: 6 }}
