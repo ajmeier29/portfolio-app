@@ -1,13 +1,13 @@
 'use client'
 
 import { EmailIcon } from "@chakra-ui/icons"
-import { Box, Button, Flex, FormControl, Heading, Input, InputGroup, InputLeftElement, Stack, Text, Textarea, VStack, useToast } from "@chakra-ui/react"
+import { Box, Button, Flex, FormControl, FormErrorIcon, FormErrorMessage, FormHelperText, Heading, Input, InputGroup, InputLeftElement, Stack, Text, Textarea, VStack, useColorModeValue, useToast } from "@chakra-ui/react"
 import { useEffect, useState } from "react";
 import { MdOutlinePerson } from 'react-icons/md';
 import emailjs from '@emailjs/browser';
 import React, { useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
-import { stringify } from "querystring";
+import { SubmitHandler, useForm } from "react-hook-form"
 
 export default function Contact() {
 
@@ -19,17 +19,24 @@ export default function Contact() {
     const emailTemplateId: string = (process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID as string);
     const verifyUrl: string = (process.env.NEXT_PUBLIC_VERIFY_URL as string);
     const toast = useToast()
-    const [token, setToken] = useState("");
-    const recaptcha = React.createRef<ReCAPTCHA>();
+    const recaptcha = React.useRef<ReCAPTCHA>(null);
 
+    // TODO: Break this out into a separate file. 
+    // Handle Captcha form submission 
     async function onChange(value: any) {
         // verify captcha
         const captchaValue = recaptcha?.current?.getValue()
         if (!captchaValue) {
-            console.log('Please verify the reCAPTCHA!')
+            toast({
+                title: 'Captcha Failed.',
+                description: "Please try again.",
+                status: 'error',
+                duration: 5000,
+                variant: 'subtle',
+                isClosable: true,
+            })
         } else {
             // make form submission
-            console.log('Form submission started...')
             try {
                 const res = await fetch(verifyUrl, {
                     method: 'POST',
@@ -42,35 +49,33 @@ export default function Contact() {
                 const data = await res.json()
                 if (data.success) {
                     setCaptchaPass(data.success)
-                    // make form submission
-                    console.log(`Form submission successful! Data: ${JSON.stringify(data)}`)
                 } else {
                     alert('reCAPTCHA validation failed!')
                 }
             } catch (e) {
-                console.log(`Exception from verify: ${e}`);
+                //console.log(`Exception from verify: ${e}`);
             }
         }
     }
 
     useEffect(() => emailjs.init(emailPubKey), []);
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        message: '',
-    });
 
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = event.target;
-        setFormData((prevFormData) => ({
-            ...prevFormData,
-            [name]: value,
-        }));
-    };
+    // The form data type
+    type FormData =
+        {
+            name: string,
+            email: string,
+            message: string
+        }
 
-    const handleSubmit = async (e: { preventDefault: () => void }) => {
-        e.preventDefault();
-        
+    const {
+        register,
+        reset,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<FormData>()
+
+    const onSubmit: SubmitHandler<FormData> = async (data) => {
         if (!captchaPass) {
             toast({
                 title: 'Unable to submit.',
@@ -84,9 +89,9 @@ export default function Contact() {
             try {
                 setLoading(true);
                 await emailjs.send(emailServiceId, emailTemplateId, {
-                    from_name: formData.name,
-                    email: formData.email,
-                    message: formData.message,
+                    from_name: data.name,
+                    email: data.email,
+                    message: data.message,
                 });
                 toast({
                     title: 'Message Sent!',
@@ -96,13 +101,17 @@ export default function Contact() {
                     variant: 'subtle',
                     isClosable: true,
                 })
+                // reset form and captcha
+                reset();
+                setCaptchaPass(false);
+                recaptcha?.current?.reset();
             } catch (error) {
                 console.log(error);
             } finally {
                 setLoading(false);
             }
         }
-    };
+    }
 
     return (
         <>
@@ -136,42 +145,68 @@ export default function Contact() {
                             >
                                 If you are interested in hiring me for a job, <br />or frelance work. Lets talk.
                             </Text>
-                            <form onSubmit={handleSubmit}>
-                                <FormControl>
-                                    <Stack
-                                        spacing={5}
-                                        mb={2}
-                                    >
+                            <form onSubmit={handleSubmit(onSubmit)}>
+                                <Stack
+                                    spacing={5}
+                                    mb={2}
+                                >
+                                    <FormControl isInvalid={errors.name ? true : false}>
                                         <InputGroup>
                                             <InputLeftElement>
                                                 <MdOutlinePerson />
                                             </InputLeftElement>
                                             <Input
+                                                {...register("name", {
+                                                    required: true
+                                                })}
                                                 type="text"
                                                 name="name"
                                                 placeholder="Your Full Name"
-                                                onChange={handleInputChange}
                                             />
                                         </InputGroup>
+                                        {errors.name ? (
+                                            <FormErrorMessage >Name is required!</FormErrorMessage>
+                                        ) : (
+                                            <></>
+                                        )}
+                                    </FormControl>
+                                    <FormControl isInvalid={errors.email ? true : false}>
                                         <InputGroup>
                                             <InputLeftElement>
                                                 <EmailIcon />
                                             </InputLeftElement>
                                             <Input
+                                                {...register("email",
+                                                    {
+                                                        required: true
+                                                    })}
                                                 type="email"
                                                 name="email"
                                                 placeholder="Your Email"
-                                                onChange={handleInputChange}
                                             />
                                         </InputGroup>
+                                        {errors.email ? (
+                                            <FormErrorMessage >Email is required!</FormErrorMessage>
+                                        ) : (
+                                            <></>
+                                        )}
+                                    </FormControl>
+                                    <FormControl isInvalid={errors.message ? true : false}>
                                         <Textarea
+                                            {...register("message", {
+                                                required: true
+                                            })}
                                             name="message"
                                             placeholder="Your Message"
                                             rows={6}
-                                            onChange={handleInputChange}
                                         />
-                                    </Stack>
-                                </FormControl>
+                                        {errors.email ? (
+                                            <FormErrorMessage >A message is required!</FormErrorMessage>
+                                        ) : (
+                                            <></>
+                                        )}
+                                    </FormControl>
+                                </Stack>
                                 <ReCAPTCHA
                                     ref={recaptcha}
                                     sitekey={key}
