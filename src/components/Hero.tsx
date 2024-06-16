@@ -62,6 +62,9 @@ export default function Hero() {
             fontWeight={600}
             fontSize={{ base: '3xl', sm: '4xl', lg: '5xl' }}>
             <Text
+              _light={{
+                color: '#103126'
+              }}
               as={'span'}
               position={'relative'}
               _after={{
@@ -79,14 +82,14 @@ export default function Hero() {
             <span ref={typedRef}></span>
             <br />
             <Text color={heroColor}>
-              Geek, <Text as={'span' } ref={typedRef} />
+              Geek, <Text as={'span'} ref={typedRef} />
             </Text>
           </Heading>
           <Text color={messageColor}>
             Thank you for visiting my portfolio website. Here you will find a variety of projects
-            that I have personally built to showcase my abilities as a devloper. Software development
-            has been a passion of mine since I wrote my first HelloWorld! This isnt a
-            career for me, its a passion!
+            that I have personally built to showcase my abilities as a devloper. I am fluent in C#/.NET, SQL, React,
+            JS, Pyhon and more. Click More Information to learn more about me, or click See My Work above to view my
+            Resume, LinkedIn, or GitHub!
           </Text>
           <Stack
             spacing={{ base: 4, sm: 6 }}
@@ -96,6 +99,7 @@ export default function Hero() {
               href={'https://docs.google.com/document/d/1-OkGqA5kyTMANqpheed3RaX2Hazz8ThoN_9J46O1Vnc/edit?usp=sharing'}
               rounded={'full'}
               size={'lg'}
+              textColor={'#f9f9f9'}
               fontWeight={'normal'}
               px={6}
               bg={heroColor}
@@ -155,7 +159,7 @@ export default function Hero() {
               height={{ base: '100%', md: '400px' }}
               width={{ base: '100%', md: '900px' }}
               src={
-                'https://lh3.googleusercontent.com/pw/AP1GczMt6s1dWbtQF7dQrjpDazFKEUd9dAA03uwK43jRfqVco75BF0pKSEE3WFc6GVp89wFVoBevu32Q7B7mTkvg_w-OpCC4B7tl0aDE75JOjBKwDQuRkIMs=w2400'
+                './heroPagePhoto.png'
               }
             />
           </Box>

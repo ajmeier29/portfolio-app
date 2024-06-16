@@ -20,7 +20,9 @@ const theme = extendTheme({
       'primary-dark':'#222831',
       'secondary-dark': '#50727B',
       'button-dark-hover': '#344955',
-      'button-light': '#92C7CF',
+      //'button-light': '#92C7CF',
+      'button-light': '#55AD9B',
+      //'button-light': '#B0A999',
       'button-light-hover': '#7ab8c2'
     },
   },
