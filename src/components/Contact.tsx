@@ -19,7 +19,7 @@ export default function Contact() {
     const emailTemplateId: string = (process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID as string);
     const verifyUrl: string = (process.env.NEXT_PUBLIC_VERIFY_URL as string);
     const toast = useToast()
-    const recaptcha = React.useRef<ReCAPTCHA>();
+    const recaptcha = React.useRef<ReCAPTCHA>(null);
 
     // TODO: Break this out into a separate file. 
     // Handle Captcha form submission 
@@ -37,7 +37,6 @@ export default function Contact() {
             })
         } else {
             // make form submission
-            console.log('Form submission started...')
             try {
                 const res = await fetch(verifyUrl, {
                     method: 'POST',
@@ -50,13 +49,11 @@ export default function Contact() {
                 const data = await res.json()
                 if (data.success) {
                     setCaptchaPass(data.success)
-                    // make form submission
-                    console.log(`Form submission successful! Data: ${JSON.stringify(data)}`)
                 } else {
                     alert('reCAPTCHA validation failed!')
                 }
             } catch (e) {
-                console.log(`Exception from verify: ${e}`);
+                //console.log(`Exception from verify: ${e}`);
             }
         }
     }
