@@ -2,7 +2,7 @@
 import { Inter } from "next/font/google";
 import { ChakraProvider, Box, useColorModeValue, background, extendTheme } from '@chakra-ui/react'
 import Navbar from "@/components/Navbar";
-import { mode } from '@chakra-ui/theme-tools'
+import { Analytics } from '@vercel/analytics/react';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +17,7 @@ const theme = extendTheme({
         _light: "white",
         _dark: "#222831",
       },
-      'primary-dark':'#222831',
+      'primary-dark': '#222831',
       'secondary-dark': '#50727B',
       'button-dark-hover': '#344955',
       //'button-light': '#92C7CF',
@@ -41,6 +41,7 @@ export default function RootLayout({
           <Navbar />
           {children}
         </ChakraProvider>
+        <Analytics />
       </body>
     </html>
   );
