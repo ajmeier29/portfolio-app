@@ -13,7 +13,7 @@ export default function Contact() {
 
     const [captchaPass, setCaptchaPass] = useState<boolean>();
     const [loading, setLoading] = useState(false);
-    const key: string = (process.env.NEXT_PUBLIC_SITE_KEY as string);
+    const key: string = (process.env.NEXT_PUBLIC_CAPTCA_CHECKBOX_PUB_KEY as string);
     const emailPubKey: string = (process.env.NEXT_PUBLIC_EMAIL_PUB_KEY as string);
     const emailServiceId: string = (process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID as string);
     const emailTemplateId: string = (process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID as string);
